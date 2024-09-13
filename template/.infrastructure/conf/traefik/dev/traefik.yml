@@ -21,3 +21,15 @@ log:
 api:
   dashboard: true
   insecure: true
+
+http:
+  routers:
+    catchall:
+      rule: "HostRegexp(`{host:.+}`)"
+      service: php
+      priority: 1
+  services:
+    php:
+      loadBalancer:
+        servers:
+          - url: "http://php:8080"

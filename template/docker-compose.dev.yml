@@ -26,10 +26,9 @@ services:
       - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.laravel.rule=HostRegexp(`localhost`)"
-      - "traefik.http.routers.laravel.entrypoints=web"
-      - "traefik.http.services.laravel.loadbalancer.server.port=8080"
-      - "traefik.http.services.laravel.loadbalancer.server.scheme=http"
+      - "traefik.http.routers.php.rule=HostRegexp(`{host:.+}`)"
+      - "traefik.http.services.php.loadbalancer.server.port=8080"
+      - "traefik.http.services.php.loadbalancer.server.scheme=http"
   
   node:
     image: node:20
